@@ -10,6 +10,7 @@
 import math
 import random
 import string
+import copy
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
@@ -91,8 +92,22 @@ def get_word_score(word, n):
     n: int >= 0
     returns: int >= 0
     """
+
+    if not word:
+        return 0
     
-    pass  # TO DO... Remove this line when you implement this function
+    points1 = 0
+    for letter in word.lower():
+        points1 += SCRABBLE_LETTER_VALUES[letter]
+
+    points2 = 7 * len(word) - 3 * (n - len(word))
+
+    if points2 < 1:
+        points2 = 1
+    
+    total = points1 * points2
+    
+    return total
 
 #
 # Make sure you understand how this function works and what it does!
@@ -167,8 +182,20 @@ def update_hand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
+    
+    new_hand = copy.copy(hand)
 
-    pass  # TO DO... Remove this line when you implement this function
+    for letter in word.lower():
+        if letter in new_hand.keys():
+            new_hand[letter] -= 1
+    
+    # cópia necessária para não modificar o objeto enquanto itero sobre ele
+    new_hand_aux = copy.copy(new_hand) 
+    for key in new_hand_aux:
+        if new_hand_aux[key] <= 0:
+            new_hand.pop(key)
+
+    return new_hand
 
 #
 # Problem #3: Test word validity
