@@ -327,6 +327,8 @@ def play_hand(hand, word_list):
                 print('That is not a valid word. Please choose another word.')
                 
             hand = update_hand(hand, user_input)
+
+            print()
             
 
     # Game is over (user entered '!!' or ran out of letters),
@@ -369,8 +371,22 @@ def substitute_hand(hand, letter):
     letter: string
     returns: dictionary (string -> int)
     """
+    new_hand = copy.copy(hand)
+
+    if letter not in hand:
+        return hand
     
-    pass  # TO DO... Remove this line when you implement this function
+    chars = VOWELS + CONSONANTS
+
+    new_char = random.choice(chars)
+
+    while new_char in hand or new_char == letter:
+       new_char = random.choice(chars)
+    
+    new_hand[new_char] = new_hand[letter]
+    new_hand.pop(letter)
+
+    return new_hand
        
     
 def play_game(word_list):
@@ -403,10 +419,45 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
-    
-    print("play_game not implemented.") # TO DO... Remove this line when you implement this function
-    
+    n_hands = int(input('Enter total number of hands: '))
+    replay = 'no'
 
+    score1 = 0
+    score2 = 0
+    score = 0
+
+    sub = False
+
+    for _ in range(n_hands):
+        hand = deal_hand(HAND_SIZE)
+        display_hand(hand)
+        
+        if not sub:
+            subst = input('Would you like to substitute a letter? ')
+            print()
+
+            if subst == 'yes':
+                letter = input('Which letter would you like to replace: ')
+                hand = substitute_hand(hand, letter)
+                sub = True
+
+        score1 = play_hand(hand, word_list)
+        print()
+
+        if replay == 'no':
+            replay = input('Would you like to replay the hand? ')
+            if replay == 'yes':
+                score2 = play_hand(hand, word_list)
+                print()
+        
+        if score2 > score1:
+            score += score2
+        else:
+            score += score1
+
+    print(f'Total score over all hands: {score}')            
+    return score
+    
 
 #
 # Build data structures used for entire session and play game
@@ -416,7 +467,6 @@ def play_game(word_list):
 
 if __name__ == '__main__':
     word_list = load_words()
-    # play_game(word_list)
+    play_game(word_list)
     
-    play_hand({'a': 1, 'c': 1, 'f': 1, 'i': 1, '*': 1, 't': 1, 'x': 1}, word_list)
     
