@@ -1,7 +1,4 @@
-# Problem Set 4A
-# Name: <your name here>
-# Collaborators:
-# Time Spent: x:xx
+# não entendi muito bem esse exercício (ou recursão no geral)
 
 def get_permutations(sequence):
     '''
