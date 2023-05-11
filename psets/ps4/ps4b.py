@@ -213,7 +213,8 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        Message.__init__(self, text)
+
 
     def decrypt_message(self):
         '''
@@ -231,26 +232,52 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass #delete this line and replace with your code here
+
+        # valores de shifts (negativos)
+        shifts_list = []
+        
+        # lista com o numero de palavras válidas para cada valor de shift aplicado
+        shifts_number = []
+
+        for shift in range(0, 26):
+             # s é o número de palavras válidas numa lista de palavras
+             s = 0
+
+             # str_aux é somente para receber o valor de message_text
+             str_aux = self.message_text
+
+             str_aux = self.apply_shift(shift * -1)
+             shifts_list.append(shift * -1)
+             words = str_aux.split()
+             for word in words:
+                 if is_word(self.valid_words, word):
+                     s += 1
+             shifts_number.append(s)
+        
+        # guardando o índice do shift que de fato foi usado para criptografar
+        i = shifts_number.index(max(shifts_number))
+        
+        # shift usado (valor negativo)
+        shift_used = shifts_list[i]
+        
+        return (abs(shift_used), self.apply_shift(shift_used))
 
 if __name__ == '__main__':
+    # Example test case (PlaintextMessage)
+    plaintext = PlaintextMessage('hello', 2)
+    print()
+    print('Expected Output: jgnnq')
+    print('Actual Output:', plaintext.get_message_text_encrypted())
+    print()
 
-#    #Example test case (PlaintextMessage)
-#    plaintext = PlaintextMessage('hello', 2)
-#    print('Expected Output: jgnnq')
-#    print('Actual Output:', plaintext.get_message_text_encrypted())
-#
-#    #Example test case (CiphertextMessage)
-#    ciphertext = CiphertextMessage('jgnnq')
-#    print('Expected Output:', (24, 'hello'))
-#    print('Actual Output:', ciphertext.decrypt_message())
+    #Example test case (CiphertextMessage)
+    msg = get_story_string()
+    ciphertext = CiphertextMessage(msg)
+    print()
+    print('Expected Output:', (14, 'Jack Florey is a mythical character created on the spur of a moment to help cover an insufficiently planned hack. He has been registered for classes at MIT twice before, but has reportedly never passed aclass. It has been the tradition of the residents of East Campus to become Jack Florey for a few nights each year to educate incoming students in the ways, means, and ethics of hacking.'))
+    print()
+    print('Actual Output:', ciphertext.decrypt_message())
 
     #TODO: WRITE YOUR TEST CASES HERE
 
-    #TODO: best shift value and unencrypted story 
-    
-    x = PlaintextMessage("Hello, World!", 4)
-    print(x.get_message_text_encrypted())
-
-    x.change_shift(1)
-    print(x.get_message_text_encrypted())
+    #TODO: best shift value and unencrypted story
