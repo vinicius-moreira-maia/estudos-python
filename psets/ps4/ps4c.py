@@ -5,6 +5,7 @@
 
 import string
 from ps4a import get_permutations
+import copy
 
 ### HELPER CODE ###
 def load_words(file_name):
@@ -70,7 +71,8 @@ class SubMessage(object):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        self.message_text = text
+        self.valid_words = load_words(WORDLIST_FILENAME)
     
     def get_message_text(self):
         '''
@@ -78,7 +80,7 @@ class SubMessage(object):
         
         Returns: self.message_text
         '''
-        pass #delete this line and replace with your code here
+        return self.message_text
 
     def get_valid_words(self):
         '''
@@ -87,7 +89,7 @@ class SubMessage(object):
         
         Returns: a COPY of self.valid_words
         '''
-        pass #delete this line and replace with your code here
+        return self.valid_words[:] # cópia
                 
     def build_transpose_dict(self, vowels_permutation):
         '''
@@ -109,8 +111,19 @@ class SubMessage(object):
                  another letter (string). 
         '''
         
-        pass #delete this line and replace with your code here
-    
+        mapped_letters = {}
+        consonants = CONSONANTS_LOWER + CONSONANTS_UPPER
+
+        for i in range(5):
+            mapped_letters[VOWELS_LOWER[i]] = vowels_permutation[i]
+            mapped_letters[VOWELS_UPPER[i]] = vowels_permutation[i].upper() 
+        
+        for consonant in consonants:
+            mapped_letters[consonant] = consonant
+        
+        return mapped_letters
+
+
     def apply_transpose(self, transpose_dict):
         '''
         transpose_dict (dict): a transpose dictionary
@@ -118,8 +131,15 @@ class SubMessage(object):
         Returns: an encrypted version of the message text, based 
         on the dictionary
         '''
+        enc_message = ''
+
+        for char in self.message_text:
+            if char.isalpha():
+                enc_message += transpose_dict[char]
+            else:
+                enc_message += char
         
-        pass #delete this line and replace with your code here
+        return enc_message
         
 class EncryptedSubMessage(SubMessage):
     def __init__(self, text):
@@ -132,7 +152,7 @@ class EncryptedSubMessage(SubMessage):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        SubMessage.__init__(self, text)
 
     def decrypt_message(self):
         '''
@@ -152,19 +172,46 @@ class EncryptedSubMessage(SubMessage):
         
         Hint: use your function from Part 4A
         '''
-        pass #delete this line and replace with your code here
-    
+        perms = get_permutations(VOWELS_LOWER)
+
+        # contagem de quantas palavras válidas para cada permutação
+        count_dict_perms = {}
+
+        for perm in perms:
+            dec_dict = self.build_transpose_dict(perm)
+            dec_msg = self.apply_transpose(dec_dict)
+            dec_msg = dec_msg.split()
+            
+            for word in dec_msg:
+                if is_word(self.valid_words, word):
+                    if perm not in count_dict_perms:
+                        count_dict_perms[perm] = 1
+                    else:
+                        count_dict_perms[perm] += 1
+                        
+        # trecho de código para visualizar todas as msgs formadas com palavras válidas a partir das permutações
+        '''
+        print(count_dict_perms)
+        for perm in count_dict_perms:
+            new_obj = copy.copy(self)
+            enc_dict = new_obj.build_transpose_dict(perm)
+            print(self.apply_transpose(enc_dict))
+        '''
+        
+        number_of_words = len(self.message_text.split())
+        for perm in count_dict_perms:
+            if count_dict_perms[perm] == number_of_words:
+                enc_dict = self.build_transpose_dict(perm)
+                return self.apply_transpose(enc_dict)    
 
 if __name__ == '__main__':
 
     # Example test case
-    message = SubMessage("Hello World!")
-    permutation = "eaiuo"
+    message = SubMessage("The book is on the table!")
+    permutation = "eiauo"
     enc_dict = message.build_transpose_dict(permutation)
     print("Original message:", message.get_message_text(), "Permutation:", permutation)
-    print("Expected encryption:", "Hallu Wurld!")
+    print("Expected encryption:", "Thi buuk as un thi tebli!")
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
     print("Decrypted message:", enc_message.decrypt_message())
-     
-    #TODO: WRITE YOUR TEST CASES HERE
