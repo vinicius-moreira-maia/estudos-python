@@ -21,11 +21,11 @@ class Ordenador:
         return cont
 
 
+if __name__ == '__main__': 
+    seq = [55,33,0,900,-432,10,77,2,11]
+    print(seq)
 
-seq = [55,33,0,900,-432,10,77,2,11]
-print(seq)
+    Ordenador.selection_sort(seq)
+    print(seq)
 
-Ordenador.selection_sort(seq)
-print(seq)
-
-print(Ordenador.selection_sort(seq))
+    print(Ordenador.selection_sort(seq))
