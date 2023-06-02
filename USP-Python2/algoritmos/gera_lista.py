@@ -10,6 +10,7 @@ def gera_lista(n):
     
         return lista
 
+
 if __name__ == '__main__':
     lista = gera_lista(10000)
     Tempo.compara(lista)

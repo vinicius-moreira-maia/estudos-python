@@ -11,7 +11,8 @@ class Ordenador:
                     pos_do_menor = j
             
             seq[i], seq[pos_do_menor] = seq[pos_do_menor], seq[i]  
-        
+    
+
     def bubble_sort(seq):
         ''' Implementação do curso da USP '''
         fim = len(seq)
@@ -21,6 +22,7 @@ class Ordenador:
                 if seq[j] > seq[j + 1]:
                     seq[j], seq[j + 1] = seq[j+1], seq[j]
     
+
     def bubble(seq):
         ''' Implementação do programação Dinâmica '''
         fim = len(seq)
@@ -30,6 +32,7 @@ class Ordenador:
                 if seq[i] > seq[i + 1]:
                     seq[i], seq[i + 1] = seq[i+1], seq[i]
     
+
     def bubble_sort2(seq):
         ''' Implementação do curso da USP (versão melhorada) '''
         fim = len(seq)
@@ -42,6 +45,7 @@ class Ordenador:
                     trocou = True
             if not trocou:
                return
+
 
     def insertion_sort(lista):
         fim = len(lista)
@@ -56,6 +60,7 @@ class Ordenador:
                 j -= 1
             
             lista[j + 1] = chave
+
 
 if __name__ == '__main__':
     ...
