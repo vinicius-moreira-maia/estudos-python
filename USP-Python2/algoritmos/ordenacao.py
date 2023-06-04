@@ -1,5 +1,5 @@
 class Ordenador:
-    def selection_sort(seq):
+    def selection_sort(self, seq):
         fim = len(seq)
 
         for i in range(fim - 1):
@@ -13,7 +13,7 @@ class Ordenador:
             seq[i], seq[pos_do_menor] = seq[pos_do_menor], seq[i]  
     
 
-    def bubble_sort(seq):
+    def bubble_sort(self, seq):
         ''' Implementação do curso da USP '''
         fim = len(seq)
 
@@ -23,7 +23,7 @@ class Ordenador:
                     seq[j], seq[j + 1] = seq[j+1], seq[j]
     
 
-    def bubble(seq):
+    def bubble(self, seq):
         ''' Implementação do programação Dinâmica '''
         fim = len(seq)
 
@@ -33,7 +33,7 @@ class Ordenador:
                     seq[i], seq[i + 1] = seq[i+1], seq[i]
     
 
-    def bubble_sort2(seq):
+    def bubble_sort2(self, seq):
         ''' Implementação do curso da USP (versão melhorada) '''
         fim = len(seq)
 
@@ -47,7 +47,7 @@ class Ordenador:
                return
 
 
-    def insertion_sort(lista):
+    def insertion_sort(self, lista):
         fim = len(lista)
 
         for i in range(1, fim):
@@ -61,8 +61,8 @@ class Ordenador:
             
             lista[j + 1] = chave
     
-
-    def merge_sort(lista):
+    
+    def merge_sort(self, lista):
         ''' 
             diminuir a lista até o caso base (len(lista) == 1)
             intercalando as listas de 2 em 2
@@ -75,14 +75,14 @@ class Ordenador:
         meio = len(lista) // 2
 
         # ordenando as sublistas
-        lado_esq = merge_sort(lista[:meio])
-        lado_dir = merge_sort(lista[meio:])
+        lado_esq = self.merge_sort(lista[:meio])
+        lado_dir = self.merge_sort(lista[meio:])
 
         # intercalação
-        return merge(lado_esq, lado_dir)
+        return self.merge(lado_esq, lado_dir)
 
 
-    def merge(lado_esq, lado_dir):
+    def merge(self, lado_esq, lado_dir):
         if not lado_esq:
             return lado_dir
         
@@ -90,9 +90,9 @@ class Ordenador:
             return lado_esq
 
         if lado_esq[0] < lado_dir[0]:
-            return [lado_esq[0]] + merge(lado_esq[1:], lado_dir)
+            return [lado_esq[0]] + self.merge(lado_esq[1:], lado_dir)
         
-        return [lado_dir[0]] + merge(lado_esq, lado_dir[1:])
+        return [lado_dir[0]] + self.merge(lado_esq, lado_dir[1:])
 
 
 if __name__ == '__main__':
