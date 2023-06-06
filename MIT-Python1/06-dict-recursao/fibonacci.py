@@ -4,6 +4,7 @@ def main():
 
     print(fibo(36, d))
   
+
 def fibo(n, d):
     '''retorna o n-ésimo número da sequência de fibonacci'''
     
@@ -16,6 +17,7 @@ def fibo(n, d):
     d[n] = ans
 
     return ans
+
 
 if __name__ == "__main__":
     main()

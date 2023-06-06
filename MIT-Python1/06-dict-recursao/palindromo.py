@@ -1,6 +1,7 @@
 def main():
     test_pal()
-    
+
+
 def is_palindrome(s):
 
     def to_chars(s):
@@ -25,8 +26,10 @@ def is_palindrome(s):
     
     return is_pal(to_chars(s))
 
+
 def test_pal():
     print(is_palindrome("dogood"))
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,3 @@
-# A parte C não foi feita (nem será). 
-
 ''' calcular quantos meses levarei pra juntar o dinheiro da entrada '''
 
 def main():
