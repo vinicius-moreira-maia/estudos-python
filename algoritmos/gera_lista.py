@@ -12,5 +12,5 @@ def gera_lista(n):
 
 
 if __name__ == '__main__':
-    lista = gera_lista(10000)
+    lista = gera_lista(1000)
     Tempo.compara(lista)
