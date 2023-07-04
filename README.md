@@ -1,12 +1,10 @@
-### Estudos em Python
+# Estudos em Python
 
 Repositório criado apenas para armazenar os códigos desenvolvidos durante alguns cursos introdutórios que envolvem tanto conceitos de Programação como de Ciência da Computação com foco em Python, por ser uma linguagem de sintaxe simples e com muitas abstrações disponíveis.
 
 O somatório destes cursos fez com que eu formasse uma base sólida em Fundamentos de Programação (condições, métodos, laços, etc.), tivesse um primeiro contato com POO, Banco de Dados e até mesmo conceitos mais voltados para a Ciência da Computação tais como: Algoritmos, Estruturas de Dados e Análise de Complexidade com Notação Grande O.
 
 Dentre todos os conceitos vistos, aqueles que mais me impactaram positivamente foram a ênfase dada em **design de software**, **modularização**, **abstração** e **desenvolvimento guiado por testes (TDD)**.
-
-<br>
 
 # Cursos
 
