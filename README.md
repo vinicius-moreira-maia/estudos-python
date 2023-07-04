@@ -14,7 +14,7 @@ Dentre todos os conceitos vistos, aqueles que mais me impactaram positivamente f
 
 [Python for Everybody (PY4E)](https://www.py4e.com/)
 
-[Scientific Computing with Python](https://www.freecodecamp.org/learn/scientific-computing-with-python/), esse e o PY4E são os mesmos, mas fiz este também pelos exercícios extras e projetos finais.
+[Scientific Computing with Python](https://www.freecodecamp.org/learn/scientific-computing-with-python/). Esse e o PY4E são os mesmos, mas fiz este também pelos exercícios extras e projetos finais.
 
 [Introdução à Ciência da Computação com Python Parte 1](https://www.coursera.org/learn/ciencia-computacao-python-conceitos)
 
