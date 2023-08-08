@@ -4,7 +4,7 @@ ing2port = dict()
 ing2port['one'] = 'um'
 
 
-# a ordem dos itens de um dicionário era irrelevante
+# a ordem dos itens de um dicionário era irrelevante (ERA)
 ing2port = {'one' : 'um', 'two' : 'dois', 'three' : 'três', 'four' : 'quatro'}
 
 # retorna o número de pares chave - valor
