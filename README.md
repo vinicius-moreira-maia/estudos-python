@@ -6,6 +6,8 @@ O somatório destes cursos fez com que eu formasse uma base sólida em **Fundame
 
 Dentre todos os conceitos vistos, aqueles que mais me impactaram positivamente foram a ênfase dada em **Design de Software**, **Modularização**, **Abstração** e **Desenvolvimento Guiado por Testes (TDD)**.
 
+**Importante** : Todos os cursos que listei abaixo são gratuitos e **alguns dos códigos deste repositório (em específico dos cursos de Python do MIT e do PY4E) não são 100% de minha autoria**, em alguns desafios uma base de código foi dada para que o aluno pudesse completar as implementações. 
+
 # Cursos
 
 [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022/)
