@@ -23,3 +23,5 @@ Dentre todos os conceitos vistos, aqueles que mais me impactaram positivamente f
 [Introdução à Ciência da Computação com Python Parte 2](https://www.coursera.org/learn/ciencia-computacao-python-conceitos-2)
 
 [python-course.eu - oop](https://python-course.eu/oop/)
+
+[Advanced Python - Playlist](https://www.youtube.com/playlist?list=PLqnslRFeH2UqLwzS0AwKDKLrpYBKzLBy2)
